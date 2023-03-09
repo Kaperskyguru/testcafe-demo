@@ -5,12 +5,13 @@ jobs:
   test:
     executor:
       name: node/default
-      tag: lts
+      tag: "16.0"
     steps:
       - checkout
-      - node/install-packages
+      - node/install-packages:
+          pkg-manager: yarn
       - run:
-          command: npm run test
+          command: yarn test
       - store_test_results:
           path: /tmp/test-results
 workflows:
